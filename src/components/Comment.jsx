@@ -34,7 +34,7 @@ function Comment({ comment }) {
   };
 
   const onEditBtnClickHandler = () => {
-    if (window.confirm('정말 삭제하시겠습니까?')) {
+    if (window.confirm('정말 수정하시겠습니까?')) {
       const data = {
         updateContent: { content: updateValue, editedAt: dayjs().format('YYYY년 MM월 DD일 hh:mm') },
         commentId: comment.commentId

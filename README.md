@@ -1,70 +1,111 @@
-# Getting Started with Create React App
+# 데일리국밥
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+전국의 국밥 맛집을 검색하고, 지역이나 평점에 따라 필터링하고 해당 국밥집에 대한 댓글을 남길 수 있는 서비스를 제공하는 웹 앱 입니다.
 
-In the project directory, you can run:
+### Features
 
-### `yarn start`
+- Client State management using RTK
+- Server State management using Tanstack React-Query
+- Asynchronous networking with server using redux thunk
+- Fetch restaurants' information from firebase/firestore
+- Draw a map with markers of fetched restaurants on it
+- Create a card list of restaurants with fetched information
+- Filter Restaurants in current card list under two conditions
+  - location
+  - Reputation
+- Perform searching operations based on
+  - location
+  - menu name(soup's name in particular)
+  - restaurant's name
+- Perform CRUD operations on comments of a certain restaurant's detail page
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Dependencies
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- React
+  - `react`
+  - `react-dom`
+- Routing
+  - `react-router-dom`
+- State Management
+  - `@tanstack/react-query`
+  - `@tanstack/react-query-devtools`
+  - `redux`
+  - `react-redux`
+  - `@reduxjs/toolkit`
+- Firebase
+  - `firebase`
+  - `@firebase/firestore`
+- Kakao Map API
+  - `react-kakao-maps-sdk`
+- Data Scraping
+  - `puppeteer`
+  - `express`
+- Miscellaneous
+  - `styled-components`
+  - `dayjs`
+  - `react-icons`
+  - `uuid`
 
-### `yarn test`
+### File tree
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+📦src
+ ┣ 📂api
+ ┃ ┣ 📜comments.js
+ ┃ ┗ 📜places.js
+ ┣ 📂assets
+ ┣ 📂components
+ ┃ ┣ 📜Card.jsx
+ ┃ ┣ 📜CardFilter.jsx
+ ┃ ┣ 📜CardList.jsx
+ ┃ ┣ 📜Comment.jsx
+ ┃ ┣ 📜CommentForm.jsx
+ ┃ ┣ 📜CommentsList.jsx
+ ┃ ┣ 📜FilteredCardList.jsx
+ ┃ ┣ 📜Header.jsx
+ ┃ ┣ 📜MapWrapper.jsx
+ ┃ ┗ 📜SearchBar.jsx
+ ┣ 📂data
+ ┃ ┗ 📜filterArrays.js
+ ┣ 📂hooks
+ ┃ ┣ 📜useComments.js
+ ┃ ┣ 📜useFilterMarkers.js
+ ┃ ┣ 📜useMarker.js
+ ┃ ┣ 📜useMarkerFromFirebase.jsx
+ ┃ ┗ 📜useMarkerFromKakao.jsx
+ ┣ 📂layout
+ ┃ ┗ 📜Layout.jsx
+ ┣ 📂pages
+ ┃ ┣ 📜Detail.jsx
+ ┃ ┣ 📜Home.jsx
+ ┃ ┗ 📜Router.jsx
+ ┣ 📂redux
+ ┃ ┣ 📂config
+ ┃ ┃ ┗ 📜configStore.js
+ ┃ ┗ 📂modules
+ ┃ ┃ ┣ 📜filterSlice.js
+ ┃ ┃ ┣ 📜markerSlice.js
+ ┃ ┃ ┣ 📜searchSlice.js
+ ┃ ┃ ┗ 📜templateSlice.js
+ ┣ 📂styled
+ ┃ ┗ 📜GlobalStyle.js
+ ┣ 📜App.jsx
+ ┣ 📜App.test.js
+ ┣ 📜db.json
+ ┣ 📜firebase.js
+ ┣ 📜index.css
+ ┣ 📜index.js
+ ┣ 📜logo.svg
+ ┣ 📜reportWebVitals.js
+ ┣ 📜setupProxy.js
+ ┗ 📜setupTests.js
+```
 
-### `yarn build`
+### Usage
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. `git clone` : clone repository
+3. `npm install`, `yarn install` : install dependencies modules from `package.json`
+2. create `.env.local` and populate it: bundle API keys and other information
+4. `npm run start`, `yarn start` : open page in development server(localHost)
